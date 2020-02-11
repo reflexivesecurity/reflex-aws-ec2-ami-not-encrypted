@@ -30,12 +30,6 @@ class Ec2AmiNotEncrypted(AWSRule):
                 return False
         return True
 
-    def get_remediation_message(self):
-        """ Returns a message about the remediation action that occurred """
-        return "The public access block was changed to" \
-               f"{self.block_configuration}, raw event: {self.raw_event} "
-
-
 def lambda_handler(event, _):
     """ Handles the incoming event """
     print(event)

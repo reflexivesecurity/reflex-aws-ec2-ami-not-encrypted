@@ -2,7 +2,7 @@
 A Reflex rule for detecting the creation of unencrypted EC2 AMIs.
 
 ## Usage
-To use this rule either add it to your `reflex.yaml` configuration file:  
+To use this rule either add it to your `reflex.yaml` configuration file:   
 ```
 version: 0.1
 

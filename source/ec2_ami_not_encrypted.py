@@ -37,9 +37,6 @@ class Ec2AmiNotEncrypted(AWSRule):
         return f"EC2 AMI block devices are not" \
                f" currently encrypted, {self.raw_event}"
 
-    def remediate(self):
-        self.resource_compliant()
-
 
 def lambda_handler(event, _):
     """ Handles the incoming event """

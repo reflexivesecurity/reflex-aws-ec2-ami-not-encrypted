@@ -1,7 +1,7 @@
 # reflex-aws-detect-ec2-ami-not-encrypted
 A Reflex rule for detecting the creation of unencrypted EC2 AMIs.
 
-To learn more about EC2 API encryption, see [the AWS Documentation](https://docs.amazonaws.cn/en_us/AWSEC2/latest/UserGuide/AMIs.html).
+To learn more about EC2 AMI encryption, see [the AWS Documentation](https://docs.amazonaws.cn/en_us/AWSEC2/latest/UserGuide/AMIs.html).
 
 ## Getting Started
 To get started using Reflex, check out [the Reflex Documentation](https://docs.cloudmitigator.com/).

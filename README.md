@@ -18,7 +18,7 @@ rules:
 or add it directly to your Terraform:  
 ```
 module "detect-ec2-ami-not-encrypted" {
-  source            = "git::https://github.com/cloudmitigator/reflex-aws-detect-ec2-ami-not-encrypted.git?ref=v0.3.1"
+  source            = "git::https://github.com/cloudmitigator/reflex-aws-detect-ec2-ami-not-encrypted.git?ref=latest"
   sns_topic_arn     = module.central-sns-topic.arn
   reflex_kms_key_id = module.reflex-kms-key.key_id
 }

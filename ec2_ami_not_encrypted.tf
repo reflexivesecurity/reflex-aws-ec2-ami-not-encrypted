@@ -1,7 +1,7 @@
-module "detect_ec2_ami_not_encrypted" {
+module "ec2_ami_not_encrypted" {
   source           = "git::https://github.com/cloudmitigator/reflex-engine.git//modules/cwe_lambda?ref=v0.5.7"
-  rule_name        = "DetectEc2AmiNotEncrypted"
-  rule_description = "Rule to enforce S3 bucket encryption"
+  rule_name        = "Ec2AmiNotEncrypted"
+  rule_description = "A Reflex rule for detecting the creation of unencrypted EC2 AMIs."
 
   event_pattern = <<PATTERN
 {
@@ -42,10 +42,10 @@ PATTERN
 }
 EOF
 
-  queue_name    = "DetectEc2AmiNotEncrypted"
+  queue_name    = "Ec2AmiNotEncrypted"
   delay_seconds = 60
-  target_id     = "DetectEc2AmiNotEncrypted"
+  target_id     = "Ec2AmiNotEncrypted"
 
-  sns_topic_arn = var.sns_topic_arn
+  sns_topic_arn  = var.sns_topic_arn
   sqs_kms_key_id = var.reflex_kms_key_id
 }

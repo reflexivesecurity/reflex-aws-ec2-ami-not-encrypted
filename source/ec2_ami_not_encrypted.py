@@ -6,7 +6,9 @@ from reflex_core.notifiers import sns_notifier
 
 
 class Ec2AmiNotEncrypted(AWSRule):
-    """ AWS rule for ensuring S3 bucket encryption """
+    """
+    A Reflex rule for detecting the creation of unencrypted EC2 AMIs
+    """
 
     def __init__(self, event):
         self.raw_event = None

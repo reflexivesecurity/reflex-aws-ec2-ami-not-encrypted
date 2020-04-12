@@ -1,5 +1,5 @@
 module "detect_ec2_ami_not_encrypted" {
-  source           = "git::https://github.com/cloudmitigator/reflex-engine.git//modules/cwe_lambda?ref=v0.5.7"
+  source           = "git::https://github.com/cloudmitigator/reflex-engine.git//modules/cwe_lambda?ref=v0.5.8"
   rule_name        = "DetectEc2AmiNotEncrypted"
   rule_description = "Rule to enforce S3 bucket encryption"
 

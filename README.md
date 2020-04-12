@@ -1,4 +1,4 @@
-# reflex-aws-detect-ec2-ami-not-encrypted
+# reflex-aws-ec2-ami-not-encrypted
 A Reflex rule for detecting the creation of unencrypted EC2 AMIs.
 
 To learn more about EC2 AMI encryption, see [the AWS Documentation](https://docs.amazonaws.cn/en_us/AWSEC2/latest/UserGuide/AMIs.html).
@@ -18,7 +18,7 @@ rules:
 or add it directly to your Terraform:  
 ```
 module "detect-ec2-ami-not-encrypted" {
-  source            = "git::https://github.com/cloudmitigator/reflex-aws-detect-ec2-ami-not-encrypted.git?ref=latest"
+  source            = "git::https://github.com/cloudmitigator/reflex-aws-ec2-ami-not-encrypted.git?ref=latest"
   sns_topic_arn     = module.central-sns-topic.arn
   reflex_kms_key_id = module.reflex-kms-key.key_id
 }
@@ -33,4 +33,4 @@ This rule has no configuration options.
 If you are interested in contributing, please review [our contribution guide](https://docs.cloudmitigator.com/about/contributing.html).
 
 ## License
-This Reflex rule is made available under the MPL 2.0 license. For more information view the [LICENSE](https://github.com/cloudmitigator/reflex-aws-detect-ec2-ami-not-encrypted/blob/master/LICENSE) 
+This Reflex rule is made available under the MPL 2.0 license. For more information view the [LICENSE](https://github.com/cloudmitigator/reflex-aws-ec2-ami-not-encrypted/blob/master/LICENSE) 

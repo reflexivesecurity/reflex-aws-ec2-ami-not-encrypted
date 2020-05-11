@@ -1,5 +1,5 @@
 module "ec2_ami_not_encrypted" {
-  source           = "git::https://github.com/cloudmitigator/reflex-engine.git//modules/cwe_lambda?ref=v0.5.7"
+  source           = "git::https://github.com/cloudmitigator/reflex-engine.git//modules/cwe_lambda?ref=v0.6.0"
   rule_name        = "Ec2AmiNotEncrypted"
   rule_description = "A Reflex rule for detecting the creation of unencrypted EC2 AMIs."
 

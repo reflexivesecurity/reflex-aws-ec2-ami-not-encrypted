@@ -1,7 +1,7 @@
 """ Module for enforcing PublicAccessBlockRule """
 
 import json
-from reflex_core import AWSRule
+from reflex_core import AWSRule, subscription_confirmation
 from reflex_core.notifiers import sns_notifier
 
 
@@ -43,6 +43,9 @@ class Ec2AmiNotEncrypted(AWSRule):
 def lambda_handler(event, _):
     """ Handles the incoming event """
     print(event)
+    if subscription_confirmation.is_subscription_confirmation(event):
+        subscription_confirmation.confirm_subscription(event)
+        return
     ami_not_encrypted = Ec2AmiNotEncrypted(
         json.loads(event["Records"][0]["body"]))
     ami_not_encrypted.run_compliance_rule()

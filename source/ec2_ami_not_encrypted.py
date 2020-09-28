@@ -1,7 +1,7 @@
 """ Module for enforcing PublicAccessBlockRule """
 
 import json
-from reflex_core import AWSRule
+from reflex_core import AWSRule, subscription_confirmation
 from reflex_core.notifiers import sns_notifier
 
 
@@ -18,11 +18,9 @@ class Ec2AmiNotEncrypted(AWSRule):
     def extract_event_data(self, event):
         """ To be implemented by every rule """
         self.raw_event = event
-        self.ami_block_device_mapping = (
-            self.raw_event["detail"]
-            ["requestParameters"]
-            ["blockDeviceMapping"]
-            ["items"])
+        self.ami_block_device_mapping = self.raw_event["detail"]["requestParameters"][
+            "blockDeviceMapping"
+        ]["items"]
 
     def resource_compliant(self):
         """ True if all blocks are set to True."""
@@ -36,13 +34,17 @@ class Ec2AmiNotEncrypted(AWSRule):
         return True
 
     def get_remediation_message(self):
-        return f"EC2 AMI block devices are not" \
-               f" currently encrypted, {self.raw_event}"
+        return (
+            f"EC2 AMI block devices are not" f" currently encrypted, {self.raw_event}"
+        )
 
 
 def lambda_handler(event, _):
     """ Handles the incoming event """
     print(event)
-    ami_not_encrypted = Ec2AmiNotEncrypted(
-        json.loads(event["Records"][0]["body"]))
+    event_payload = json.loads(event["Records"][0]["body"])
+    if subscription_confirmation.is_subscription_confirmation(event_payload):
+        subscription_confirmation.confirm_subscription(event_payload)
+        return
+    ami_not_encrypted = Ec2AmiNotEncrypted(event_payload)
     ami_not_encrypted.run_compliance_rule()
